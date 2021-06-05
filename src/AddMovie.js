@@ -1,15 +1,24 @@
 import React, { useContext, useState, useRef } from 'react';
 import { MovieContext } from './MovieContext';
 export const AddMovie = () => {
+  const initialValues = {
+    movie: '',
+    price: ''
+  };
   const inputfield = useRef(null);
-  const [movie, setMovie] = useState('');
-  const [price, setPrice] = useState('');
+  const [values, setValues] = useState(initialValues);
+  // const [movie, setMovie] = useState('');
+  // const [price, setPrice] = useState('');
   const [movies, setMovies] = useContext(MovieContext);
-  function handleMovie(e) {
-    setMovie(e.target.value);
-  }
-  function handlePrice(e) {
-    setPrice(e.target.value);
+  // function handleMovie(e) {
+  //   setMovie(e.target.value);
+  // }
+  // function handlePrice(e) {
+  //   setPrice(e.target.value);
+  // }
+  function handleInputChange(e) {
+    const { name, value } = e.target();
+    setValues({ ...values, [name]: value });
   }
   function addMovie(e) {
     e.preventDefault();
@@ -22,8 +31,9 @@ export const AddMovie = () => {
           price: `$ ${price}`
         }
       ]);
-      setMovie('');
-      setPrice('');
+      // setMovie('');
+      // setPrice('');
+      seetValues(initialValues);
       inputfield.current.blur();
     }
   }
@@ -32,15 +42,17 @@ export const AddMovie = () => {
       <form onSubmit={addMovie}>
         <input
           type="text"
-          onChange={handleMovie}
-          value={movie}
+          onChange={handleInputChange}
+          value={values.movie}
           ref={inputfield}
+          name="movie"
         />
         <input
           type="text"
-          onChange={handlePrice}
-          value={price}
+          onChange={handleInputChange}
+          value={values.price}
           ref={inputfield}
+          name="price"
         />
         <button>Submit</button>
       </form>
