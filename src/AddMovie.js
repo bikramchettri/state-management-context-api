@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { MovieContext } from './MovieContext';
 export const AddMovie = () => {
-  const [movie, setMovie] = uMeState('');
+  const [movie, setMovie] = useState('');
   const [price, setPrice] = useState('');
   const [movies, setMovies] = useContext(MovieContext);
   function handleMovie(e) {
