@@ -1,11 +1,24 @@
-import React from 'react'
-export const AddMovie =() =>{
-  return(
+import React, { useContext, useState } from 'react';
+import { MovieContext } from './MovieContext';
+export const AddMovie = () => {
+  const [movie, setMovie] = uMeState('');
+  const [price, setPrice] = useState('');
+  const [movies, setMovies] = useContext(MovieContext);
+  function handleMovie(e) {
+    setMovie(e.target.value);
+  }
+  function handlePrice(e) {
+    setPrice(e.target.value);
+  }
+  function addMovie(e) {
+    e.preventDefault();
+  }
+  return (
     <>
-    <form>
-    <input type="text" onChange={} value={movie}/>
-    <input type="text" onChange={} value={price} />
-    </form>
+      <form onSubmit={addMovie}>
+        <input type="text" onChange={handleMovie} value={movie} />
+        <input type="text" onChange={handlePrice} value={price} />
+      </form>
     </>
-  )
-}
+  );
+};
