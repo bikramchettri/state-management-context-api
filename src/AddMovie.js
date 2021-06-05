@@ -12,6 +12,10 @@ export const AddMovie = () => {
   }
   function addMovie(e) {
     e.preventDefault();
+    setMovies([
+      ...movies,
+      { id: new Date().getTime().toString(), name: movie, price: `$ ${price}` }
+    ]);
   }
   return (
     <>
