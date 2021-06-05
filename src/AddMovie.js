@@ -17,23 +17,23 @@ export const AddMovie = () => {
   //   setPrice(e.target.value);
   // }
   function handleInputChange(e) {
-    const { name, value } = e.target();
+    const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   }
   function addMovie(e) {
     e.preventDefault();
-    if (movie && price) {
+    if (values.movie && values.price) {
       setMovies([
         ...movies,
         {
           id: new Date().getTime().toString(),
-          name: movie,
-          price: `$ ${price}`
+          name: values.movie,
+          price: `$ ${values.price}`
         }
       ]);
       // setMovie('');
       // setPrice('');
-      seetValues(initialValues);
+      setValues(initialValues);
       inputfield.current.blur();
     }
   }
