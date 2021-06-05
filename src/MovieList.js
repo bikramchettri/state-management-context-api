@@ -8,10 +8,10 @@ const MovieList = () => {
   return (
     <>
       <h1>{value}</h1>
-      {/* <h1>MovieList</h1>
+      <h1>MovieList</h1>
       {movies.map(movie => (
         <Movie key={movie.id} {...movie} />
-      ))} */}
+      ))}
     </>
   );
 };

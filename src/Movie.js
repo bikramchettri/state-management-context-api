@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-const Movie = () => {
+const Movie = ({ id, name, price }) => {
   return (
     <>
-      <div>Hello</div>
-      {/* <div>
+      <div>
         <h3>{name}</h3>
         <p>{price}</p>
-      </div> */}
-      {/* { id, name, price } */}
+      </div>
     </>
   );
 };
