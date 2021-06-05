@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { MovieContext } from './MovieContext';
 export const AddMovie = () => {
+  const inputfield = useRef(null);
   const [movie, setMovie] = useState('');
   const [price, setPrice] = useState('');
   const [movies, setMovies] = useContext(MovieContext);
@@ -12,16 +13,36 @@ export const AddMovie = () => {
   }
   function addMovie(e) {
     e.preventDefault();
-    setMovies([
-      ...movies,
-      { id: new Date().getTime().toString(), name: movie, price: `$ ${price}` }
-    ]);
+    if (movie && price) {
+      setMovies([
+        ...movies,
+        {
+          id: new Date().getTime().toString(),
+          name: movie,
+          price: `$ ${price}`
+        }
+      ]);
+      setMovie('');
+      setPrice('');
+      inputfield.current.blur();
+    }
   }
   return (
     <>
       <form onSubmit={addMovie}>
-        <input type="text" onChange={handleMovie} value={movie} />
-        <input type="text" onChange={handlePrice} value={price} />
+        <input
+          type="text"
+          onChange={handleMovie}
+          value={movie}
+          ref={inputfield}
+        />
+        <input
+          type="text"
+          onChange={handlePrice}
+          value={price}
+          ref={inputfield}
+        />
+        <button>Submit</button>
       </form>
     </>
   );
