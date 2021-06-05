@@ -4,7 +4,7 @@ import { MovieContext } from './MovieContext';
 import Movie from './Movie';
 
 const MovieList = () => {
-  const value = useContext(MovieContext);
+  const movies = useContext(MovieContext);
   return (
     <>
       <h1>{value}</h1>
